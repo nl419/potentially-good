@@ -47,7 +47,8 @@ for i = linspace(0,1,nv)
     psi_bad = tmp + psi_bad;
 end
 
-%% looking at the horrors we have produced
+%% Contour Plots
 contour(xm, ym, psi_good, c);
+
 figure;
 contour(xm, ym, psi_bad, c);
