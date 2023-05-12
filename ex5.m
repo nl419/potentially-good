@@ -11,7 +11,7 @@ ymax = 2;
 ny = 140;
 np = 100;
 
-alpha = 0;
+alpha = 0.1;
 
 c = -1.75:0.05:1.75;
 
@@ -28,9 +28,9 @@ y_cy = sin(theta);
 
 %% Streamfunction
 
-psi = ym;
 A = build_lhs(x_cy,y_cy);
 b = build_rhs(x_cy,y_cy,alpha);
+
 gam = A\b;
 disp(gam);
 

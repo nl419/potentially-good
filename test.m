@@ -8,6 +8,13 @@ x_cy = cos(theta);
 y_cy = sin(theta);
 alpha = 0;
 
+A = [1 2 3 4;
+    5 6 7 8;
+    9 10 11 12];
 
-rhsvec = build_rhs(x_cy,y_cy,alpha);
-disp(rhsvec);
+disp(size(A));
+
+psi_n2 = circshift(A,-1,1);
+disp(psi_n2);
+
+
