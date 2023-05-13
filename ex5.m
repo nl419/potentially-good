@@ -9,9 +9,9 @@ nx = 151;
 ymin = -2;
 ymax = 2;
 ny = 140;
-np = 100;
+np = 300;
 
-alpha = 0.1;
+alpha = 0;
 
 c = -1.75:0.05:1.75;
 
@@ -25,6 +25,7 @@ ym = y_1D'*ones([1 nx]);
 theta = (0:np)*2*pi/np;
 x_cy = cos(theta);
 y_cy = sin(theta);
+disp(x_cy);
 
 %% Streamfunction
 
@@ -33,5 +34,10 @@ b = build_rhs(x_cy,y_cy,alpha);
 
 gam = A\b;
 disp(gam);
-
 %% Plotting
+
+figure;
+theta_norm = theta/pi;
+disp(size(theta));
+scatter(theta_norm, gam');
+
