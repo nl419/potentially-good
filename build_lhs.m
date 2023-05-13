@@ -23,6 +23,7 @@ function lhsmat = build_lhs(xs,ys)
     psi_n2 = circshift(psip,-1,1);
     psi_t = psi_n2 - psip;
     lhsmat = psi_t; 
-    lhsmat(end,:) = lhsmat(1,:);
+    lhsmat(end,:) = [];
+%     lhsmat(:,end) = [];
 end
 
