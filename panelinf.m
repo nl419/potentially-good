@@ -5,9 +5,6 @@ t = t ./ del;
 n = [-t(2) t(1)];
 correct_shape = size(xm);
 r = [(reshape(xm, [], 1) - xa) (reshape(ym, [], 1) - ya)];
-size(r)
-size(t)
-size(n)
 xm_rot = r * t';
 ym_rot = r * n';
 [infa, infb] = refpaninf(del, xm_rot, ym_rot);
