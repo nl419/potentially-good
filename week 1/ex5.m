@@ -2,7 +2,7 @@ clc
 close all
 clear all
 
-%% Initial 
+%% Initialising
 xmin = -2.5;
 xmax = 2.5;
 nx = 151;
@@ -12,23 +12,18 @@ ny = 140;
 np = 100;
 
 alpha = pi/20;
-
 c = -1.73:0.05:1.75;
-
 R = 1;
-
-%% more initialising
 
 x_1D = linspace(xmin, xmax, nx);
 y_1D = linspace(ymin, ymax, ny);
 xm = ones([ny 1])*x_1D;
 ym = y_1D'*ones([1 nx]);
-
 theta = (0:np)*2*pi/np;
 x_cy = R * cos(theta);
 y_cy = R * sin(theta);
 
-%% Streamfunction
+%% Streamfunction Calculation
 
 A = build_lhs(x_cy,y_cy);
 b = build_rhs(x_cy,y_cy,alpha);
@@ -55,14 +50,19 @@ end
 
 figure;
 theta_norm = (theta)/pi;
-
-scatter(theta_norm(1:end), gam');
-
+scatter(theta_norm(1:end), -gam');
 circ = sum(gam)*2*pi*R/np;
-disp(circ);
+fprintf("The circulation is: %g\n",circ);
+
+title("Variation of tangential velocity with normalised angle", 'FontSize',20);
+xlabel("\theta/\pi", 'FontSize',18,'FontWeight','bold');
+ylabel('Tangential Velocity, $u_{\theta}$','interpreter','latex', 'FontSize',18);
 
 figure;
 contour(xm, ym, psi, c);
 hold on
 plot(x_cy,y_cy)
 hold off
+title("Streamline plot for cylinder flow", 'FontSize',20);
+xlabel("x", 'FontSize',18,'FontWeight','bold');
+ylabel("y", 'FontSize',18,'FontWeight','bold');
