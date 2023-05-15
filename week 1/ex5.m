@@ -27,9 +27,7 @@ y_cy = R * sin(theta);
 
 A = build_lhs(x_cy,y_cy);
 b = build_rhs(x_cy,y_cy,alpha);
-
 gam = A\b;
-disp(gam);
 
 psi = ym .* cos(alpha) - xm .* sin(alpha);
 for i = 1:(length(x_cy)-1)
@@ -54,7 +52,7 @@ scatter(theta_norm(1:end), -gam');
 circ = sum(gam)*2*pi*R/np;
 fprintf("The circulation is: %g\n",circ);
 
-title("Variation of tangential velocity with normalised angle", 'FontSize',20);
+title("Variation of tangential velocity over surface, alpha = \pi/20", 'FontSize',20);
 xlabel("\theta/\pi", 'FontSize',18,'FontWeight','bold');
 ylabel('Tangential Velocity, $u_{\theta}$','interpreter','latex', 'FontSize',18);
 
@@ -63,6 +61,6 @@ contour(xm, ym, psi, c);
 hold on
 plot(x_cy,y_cy)
 hold off
-title("Streamline plot for cylinder flow", 'FontSize',20);
+title("Streamline plot for cylinder flow, alpha = \pi/20", 'FontSize',20);
 xlabel("x", 'FontSize',18,'FontWeight','bold');
 ylabel("y", 'FontSize',18,'FontWeight','bold');
