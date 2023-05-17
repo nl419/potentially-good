@@ -8,7 +8,7 @@ xmax = 2.5;
 nx = 51;
 ymin = -2;
 ymax = 2;
-ny = 42;
+ny = 41;
 gamma_a = 3.0;
 gamma_b = 4.0;
 

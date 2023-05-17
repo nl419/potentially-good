@@ -5,18 +5,18 @@ clear all
 %% Initialising 
 xmin = 0;
 xmax = 5;
-nx = 151;
+nx = 150;
 ymin = 0;
 ymax = 4;
-ny = 140;
+ny = 41;
 gamma_a = 3.0;
 gamma_b = 4.0;
 
 del = 1.5;
 c = -1:0.05:1;
 
-panel_x_min = 2.2;
-panel_x_max = 4.1;
+panel_x_min = 4.1;
+panel_x_max = 2.2;
 panel_y_min = 1.3;
 panel_y_max = 2.9;
 

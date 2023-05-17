@@ -5,10 +5,10 @@ clear all
 %% Initialising
 xmin = -2.5;
 xmax = 2.5;
-nx = 151;
+nx = 50;
 ymin = -2;
 ymax = 2;
-ny = 140;
+ny = 41;
 np = 100;
 
 c = -1.75:0.05:1.75;
