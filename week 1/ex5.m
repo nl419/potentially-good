@@ -11,7 +11,7 @@ ymax = 2;
 ny = 41;
 np = 100;
 
-alpha = 0;
+alpha = pi/20;
 c = -1.73:0.05:1.75;
 R = 1;
 
@@ -48,11 +48,11 @@ end
 
 figure;
 theta_norm = (theta)/pi;
-scatter(theta_norm(1:end), -gam');
+scatter(theta_norm(1:end), gam');
 circ = sum(gam)*2*pi*R/np;
 fprintf("The circulation is: %g\n",circ);
 
-title("Variation of tangential velocity with surface angle, alpha = 0", 'FontSize',20);
+title("Variation of tangential velocity with surface angle, alpha = \pi/20", 'FontSize',20);
 xlabel("\theta/\pi", 'FontSize',18,'FontWeight','bold');
 ylabel('Tangential Velocity, $u_{\theta}$','interpreter','latex', 'FontSize',18);
 
@@ -61,6 +61,6 @@ contour(xm, ym, psi, c);
 hold on
 plot(x_cy,y_cy)
 hold off
-title("Streamline plot for cylinder flow, alpha = 0", 'FontSize',20);
+title("Streamline plot for cylinder flow, alpha \pi/20 ", 'FontSize',20);
 xlabel("x", 'FontSize',18,'FontWeight','bold');
 ylabel("y", 'FontSize',18,'FontWeight','bold');

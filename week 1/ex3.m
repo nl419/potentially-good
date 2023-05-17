@@ -13,7 +13,8 @@ gamma_a = 3.0;
 gamma_b = 4.0;
 
 del = 1.5;
-c = -1:0.05:1;
+c = -0.15:0.05:0.15;
+c2 = -1:0.05:1;
 
 panel_x_min = 4.1;
 panel_x_max = 2.2;
@@ -27,9 +28,9 @@ ym = y_1D'*ones([1 nx]);
 
 %% Calculation
 %Exact
-[fa, fb] = panelinf(panel_x_min, panel_y_min, ...
+[fa1, fb1] = panelinf(panel_x_min, panel_y_min, ...
     panel_x_max, panel_y_max, xm, ym);
-psi_exact = gamma_a .* fa + gamma_b .* fb;
+psi_exact = gamma_a .* fa1 + gamma_b .* fb1;
 
 % Approximate with discrete vortices
 psi_approx = zeros([ny nx]);
@@ -46,13 +47,25 @@ end
 
 %% Contour Plots
 figure;
-contour(xm, ym, psi_exact, c);
+contour(xm, ym, fa1, c);
+title("Contour plot for f_a (exact)", 'FontSize',20);
+xlabel("x", 'FontSize',18,'FontWeight','bold');
+ylabel("y", 'FontSize',18,'FontWeight','bold');
+
+figure;
+contour(xm, ym, fb1, c);
+title("Contour plot for f_b (exact)", 'FontSize',20);
+xlabel("x", 'FontSize',18,'FontWeight','bold');
+ylabel("y", 'FontSize',18,'FontWeight','bold');
+
+figure;
+contour(xm, ym, psi_exact, c2);
 title("Contour plot for vortex sheet (exact)", 'FontSize',20);
 xlabel("x", 'FontSize',18,'FontWeight','bold');
 ylabel("y", 'FontSize',18,'FontWeight','bold');
 
 figure;
-contour(xm, ym, psi_approx, c);
+contour(xm, ym, psi_approx, c2);
 title("Contour plot for vortex sheet (approximate)", 'FontSize',20);
 xlabel("x", 'FontSize',18,'FontWeight','bold');
 ylabel("y", 'FontSize',18,'FontWeight','bold');

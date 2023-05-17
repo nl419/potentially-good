@@ -11,7 +11,7 @@ ymax = 2;
 ny = 41;
 np = 100;
 
-c = -1.75:0.05:1.75;
+c = -1.75:0.25:1.75;
 
 x_1D = linspace(xmin, xmax, nx);
 y_1D = linspace(ymin, ymax, ny);
@@ -46,6 +46,6 @@ contour(xm, ym, psi, c);
 hold on
 plot(x_cy,y_cy)
 hold off
-title("Streamline plot for cylinder flow", 'FontSize',20);
+title("Streamlines for cylinder flow", 'FontSize',20);
 xlabel("x", 'FontSize',18,'FontWeight','bold');
 ylabel("y", 'FontSize',18,'FontWeight','bold');
