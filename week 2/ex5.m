@@ -8,7 +8,7 @@ global Re ue0 duedx
 
 Re = 1e7;
 ue0 = 1;
-duedx = -0.9;
+duedx = -0.5;
 
 x0 = 0.01;
 thick0(1) = 0.037 * x0 * (Re * x0) ^ (-1/5);
@@ -31,4 +31,7 @@ for i = 1:length(He)
    end
 end
 
+%% Plotting
 
+figure;
+scatter(x, theta_over_L);

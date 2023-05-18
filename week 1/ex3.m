@@ -5,7 +5,7 @@ clear all
 %% Initialising 
 xmin = 0;
 xmax = 5;
-nx = 150;
+nx = 51;
 ymin = 0;
 ymax = 4;
 ny = 41;

@@ -32,12 +32,10 @@ panel_x_min = 0;
 panel_x_max = del + panel_x_min;
 nv = 100;
 for i = linspace(0,1,nv)
-    gamma_atmp = (gamma_a * (1 - i)) * del / nv;
-    gamma_btmp =  (gamma_b * i) * del / nv;
+    gamma = (gamma_a * (1 - i)+ (gamma_b * i)) * del / nv;
     x = panel_x_min * (1 - i) + panel_x_max * i;
-    tmp_a = psipv(x, 0, gamma_atmp, xm, ym);
-    tmp_b = psipv(x, 0, gamma_btmp, xm, ym);
-    psi_approx = tmp_a + tmp_b + psi_approx;
+    tmp = psipv(x, 0, gamma, xm, ym);
+    psi_approx = tmp + psi_approx;
 end
 %% Plotting
 figure;
