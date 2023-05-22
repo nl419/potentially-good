@@ -9,10 +9,10 @@ nx = 51;
 ymin = -2;
 ymax = 2;
 ny = 41;
-np = 100;
+np = 1000;
 
 alpha = pi/20;
-c = -1.73:0.05:1.75;
+c = -1.75:0.25:1.75;
 R = 1;
 
 x_1D = linspace(xmin, xmax, nx);
@@ -25,7 +25,9 @@ y_cy = R * sin(theta);
 
 %% Streamfunction Calculation
 
-A = build_lhs(x_cy,y_cy);
+tic
+    A = build_lhs(x_cy,y_cy);
+toc
 b = build_rhs(x_cy,y_cy,alpha);
 gam = A\b;
 

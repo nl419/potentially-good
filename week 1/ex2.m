@@ -9,8 +9,8 @@ nx = 51;
 ymin = -2;
 ymax = 2;
 ny = 41;
-gamma_a = 3.0;
-gamma_b = 4.0;
+gamma_a = 1.0;
+gamma_b = 0.0;
 
 del = 1.5;
 c = -0.1:0.05:0.1;
@@ -31,12 +31,13 @@ psi_approx = zeros([ny nx]);
 panel_x_min = 0;
 panel_x_max = del + panel_x_min;
 nv = 100;
-for i = linspace(0,1,nv)
-    gamma = (gamma_a * (1 - i)+ (gamma_b * i)) * del / nv;
+for i = linspace(0.5/nv,1-0.5/nv,nv)
+    gamma = (gamma_a * (1 - i) + (gamma_b * i)) * del / nv;
     x = panel_x_min * (1 - i) + panel_x_max * i;
     tmp = psipv(x, 0, gamma, xm, ym);
     psi_approx = tmp + psi_approx;
 end
+
 %% Plotting
 figure;
 contour(xm, ym, fa1, c);

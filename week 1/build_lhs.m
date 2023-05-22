@@ -1,23 +1,19 @@
 function lhsmat = build_lhs(xs,ys)
     np = length(xs) - 1;
-    psip = zeros(np+1,np+1); 
+    psip = zeros(np+1,np+1);
     for i = 1:(np+1)
-        for  j = 1:(np+1)
-            if j == 1
-                [fa1, fb1] = panelinf(xs(j), ys(j), ...
-        xs(j+1), ys(j+1), xs(i), ys(i));
-                psip(i,j) = fa1;
-            elseif j == np+1
-                [fa1, fb1] = panelinf(xs(j-1), ys(j-1), ...
-        xs(1), ys(1), xs(i), ys(i));
-                psip(i, j) = fb1;
-            else
-               [fa1, fb1] = panelinf(xs(j), ys(j), ...
-        xs(j+1), ys(j+1), xs(i), ys(i));
-               [fa2, fb2] = panelinf(xs(j-1), ys(j-1), ...
-        xs(j), ys(j), xs(i), ys(i));
-                psip(i, j) = fa1 + fb2;
-            end
+        [fa1, fb1] = panelinf(xs(np), ys(np), ...
+            xs(1), ys(1), xs(i), ys(i));
+        psip(i, np+1) = fb1;
+        [fa1, fb1] = panelinf(xs(1), ys(1), ...
+            xs(2), ys(2), xs(i), ys(i));
+        psip(i,1) = fa1;
+        fb2 = fb1;
+        for j = 2:np
+            [fa1, fb2_next] = panelinf(xs(j), ys(j), ...
+                xs(j+1), ys(j+1), xs(i), ys(i));
+            psip(i, j) = fa1 + fb2;
+            fb2 = fb2_next;
         end
     end
     
