@@ -6,14 +6,10 @@ function dthickdx = thickdash(xmx0, thick)
     else
         H = 2.803;
     end
-
     ue = ue0 + duedx * xmx0;
-
     Rethet = Re * ue * thick(1);
-
     cf = 0.091448 * power((H - 1) * Rethet, -0.232) * exp(-1.26 * H);
     cdiss = 0.010023 * power((H - 1) * Rethet, -1/6);
-
     f1 = cf / 2 - (H + 2) * duedx * thick(1) / ue;
     f2 = cdiss - 3 * duedx * thick(2) / ue;
     dthickdx = [f1 f2]';

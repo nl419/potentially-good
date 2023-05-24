@@ -4,7 +4,7 @@ clear all
 
 %% Initial 
 Re = 1.83e6;
-n_trapeziums = 5000;
+n_trapeziums = 100;
 xs_norm = linspace(0,1,n_trapeziums + 1);
 gradU_norm = -0.5; % d(ue/U)/d(x/L)
 us_norm = ones([n_trapeziums + 1,1]);
@@ -41,22 +41,9 @@ while laminar && i < n_trapeziums
     end
 end
 
-balsius = (0.664 / sqrt(Re)) .* sqrt(xs_norm);
-
 if int ~= 0
     disp(['Natural transition at ' num2str(int) ' with Rethet ' num2str(Rethet)]);
 end
 if ils ~= 0
     disp(['Laminar separation at ' num2str(ils) ' with Rethet ' num2str(Rethet)]);
 end
-
-%% Plotting
-
-% disp(balsius);
-% disp(theta_over_L);
-% figure;
-% scatter(xs_norm, theta_over_L);
-% hold on
-% scatter(xs_norm, balsius);
-% hold off
-% legend("approximate", "balsius")

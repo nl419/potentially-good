@@ -35,3 +35,9 @@ end
 
 figure;
 scatter(x, theta_over_L);
+hold on
+scatter(x, delta_over_L);
+legend({'\theta/L', '\delta_e/L'},'FontSize',16);
+xlabel("x/L", 'FontSize',18,'FontWeight','bold');
+ylabel("Distance from plate (m)", 'FontSize',18,'FontWeight','bold');
+
