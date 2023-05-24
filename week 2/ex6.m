@@ -6,8 +6,8 @@ global Re ue0 duedx
 
 %% Initial
 figure;
-Re_vals = [1e6 1e7];
-duedx = 0;
+Re_vals = [1e4 1e5 1e6];
+duedx = -0.25;
 
 %% Loops
 for i = 1:length(Re_vals)
@@ -104,7 +104,7 @@ hold off
 legend({'$Re_L = 1 \times 10^6$', '$Re_L = 1 \times 10^7$'}, 'interpreter','latex','FontSize',16)
 xlabel("x/L", 'FontSize',18,'FontWeight','bold');
 ylabel("$H_E$", 'interpreter','latex', 'FontSize',18,'FontWeight','bold');
-xline(0.37,'--r',{'Natural Transition'}, 'HandleVisibility','off')
+% xline(0.37,'--r',{'Natural Transition'}, 'HandleVisibility','off')
 xline(0.5,'--b',{'Laminar Separation'}, 'HandleVisibility','off')
 xline(0.5,'--r',{'Laminar Separation'}, 'HandleVisibility','off')
 xline(0.59,'--r',{'Turbulent Reattachment'}, 'HandleVisibility','off')
