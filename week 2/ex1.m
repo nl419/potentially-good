@@ -4,27 +4,27 @@ clear all
 
 %% Initialising
 
-Re = 1e5;
+Re = 2500;
 n_trapeziums = 100;
-xs_norm = linspace(0,1,n_trapeziums + 1);
+x = linspace(0,1,n_trapeziums + 1);
 U = 1;
-us_norm = ones([n_trapeziums + 1,1]);
+ue = ones([n_trapeziums + 1,1]);
 result = 0;
-theta_over_L = zeros([n_trapeziums + 1,1]);
-theta_over_L(1) = result;
+theta = zeros([n_trapeziums + 1,1]);
+theta(1) = result;
 for i=1:n_trapeziums
-    result = result + ueintbit(xs_norm(i), us_norm(i), xs_norm(i+1), us_norm(i+1));
-    theta_over_L(i+1) = sqrt((0.45 / Re) * power(us_norm(i+1), -6) * result);
+    result = result + ueintbit(x(i),ue(i), x(i+1),ue(i+1));
+    theta(i+1) = sqrt((0.45 / Re) * power(ue(i+1), -6) * result);
 end
-blasius = (0.664 / sqrt(Re)) .* sqrt(xs_norm);
+blasius = (0.664 / sqrt(Re)) .* sqrt(x);
 
 %% Plotting
 
 figure;
-scatter(xs_norm, theta_over_L);
+scatter(x, theta);
 hold on
-scatter(xs_norm, blasius);
+scatter(x, blasius);
 hold off
-legend("Approximate Solution", "Blasius Solution")
+legend("Approximate Solution", "Blasius Solution",'FontSize',14)
 xlabel("x/L", 'FontSize',18,'FontWeight','bold');
-ylabel("$\theta$", 'interpreter','latex', 'FontSize',18,'FontWeight','bold');
+ylabel("$\theta/L$", 'interpreter','latex', 'FontSize',18,'FontWeight','bold');
