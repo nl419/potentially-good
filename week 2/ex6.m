@@ -23,6 +23,8 @@ for i = 1:length(Re_vals)
 
     theta = zeros([n_trapeziums + 1,1]);
     He = zeros([n_trapeziums + 1,1]);
+    He(1) = 1.57258;
+
 
     laminar = true;
     i = 1;
@@ -81,27 +83,23 @@ for i = 1:length(Re_vals)
     end
 
     if int ~= 0
-        i = int;
-        disp(['Natural transition at ' num2str(x(i)) ' with Rethet ' num2str(Re * ue(i) * theta(i))]);
+        disp(['Natural transition at ' num2str(x(int)) ' with Rethet ' num2str(Re * ue(int) * theta(int))]);
     end
     if ils ~= 0
-        i = ils;
-        disp(['Laminar separation at ' num2str(x(i)) ' with Rethet ' num2str(Re * ue(i) * theta(i))]);
+        disp(['Laminar separation at ' num2str(x(ils)) ' with Rethet ' num2str(Re * ue(ils) * theta(ils))]);
     end
     if itr ~= 0
-        i = itr;
-        disp(['Turbulent reattachment at ' num2str(x(i)) ' with Rethet ' num2str(Re * ue(i) * theta(i))]);
+        disp(['Turbulent reattachment at ' num2str(x(itr)) ' with Rethet ' num2str(Re * ue(itr) * theta(itr))]);
     end
     if its ~= 0
-        i = its;
-        disp(['Turbulent separation at ' num2str(x(i)) ' with Rethet ' num2str(Re * ue(i) * theta(i))]);
+        disp(['Turbulent separation at ' num2str(x(its)) ' with Rethet ' num2str(Re * ue(its) * theta(its))]);
     end
     scatter(x, He);
     hold on
 end
 
 hold off
-legend({'$Re_L = 1 \times 10^6$', '$Re_L = 1 \times 10^7$'}, 'interpreter','latex','FontSize',16)
+legend({'$Re_L = 1 \times 10^4$', '$Re_L = 1 \times 10^5$','$Re_L = 1 \times 10^6$'}, 'interpreter','latex','FontSize',16)
 xlabel("x/L", 'FontSize',18,'FontWeight','bold');
 ylabel("$H_E$", 'interpreter','latex', 'FontSize',18,'FontWeight','bold');
 % xline(0.37,'--r',{'Natural Transition'}, 'HandleVisibility','off')
@@ -109,4 +107,4 @@ xline(0.5,'--b',{'Laminar Separation'}, 'HandleVisibility','off')
 xline(0.5,'--r',{'Laminar Separation'}, 'HandleVisibility','off')
 xline(0.59,'--r',{'Turbulent Reattachment'}, 'HandleVisibility','off')
 xline(0.49,'--g',{'Natural Transition'}, 'HandleVisibility','off')
-ylim([1.45 1.9]);
+ylim([1.35 1.85]);
