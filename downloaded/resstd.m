@@ -35,13 +35,13 @@ A = build_lhs ( xs, ys );
 b = build_rhs ( xs, ys, alpha );
 
 gams = inv(A) * b;
+
 xs2 = xs;
 cp2 = 1 - gams.^2;
 
 disp('Starting 400 panel calculation ...')
 np = 400;
 [xs ys] = make_upanels( xsin, ysin, np );
-
 A = build_lhs ( xs, ys );
 b = build_rhs ( xs, ys, alpha );
 
