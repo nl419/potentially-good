@@ -16,6 +16,8 @@ if int~=0
   disp(['Natural transition at x = ' num2str(x(int))])
 end
 
+disp(length(x));
+disp(length(theta));
 plot(x,blthet,'-',x,theta,'x')
 xlabel('x')
 ylabel('\theta')
