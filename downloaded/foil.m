@@ -167,6 +167,9 @@ for nalpha = 1:length(alpha)
 
 end
 
+scatter(clswp, cdswp);
+%scatter(alpha, clswp);
+
 %  save alpha sweep data in summary file
 
 fname = ['Data/' caseref '.mat'];

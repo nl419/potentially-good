@@ -1,0 +1,4 @@
+Section identifier              : test
+Number of panels                : 100
+Reynolds number                 : 3e6
+Range of incidences (degrees)   : -16:1:16

@@ -1,6 +1,6 @@
 function [int, ils, itr, its, delstar, theta] = bl_solv(x,cp)
     global Re ue0 duedx
-    n_trapeziums = 100;
+    n_trapeziums = length(x);
     ue = sqrt(1 - cp);
 
     theta = zeros([n_trapeziums,1]);
@@ -22,7 +22,7 @@ function [int, ils, itr, its, delstar, theta] = bl_solv(x,cp)
         i = i + 1;
         result = result + ueintbit(x(i-1), ue(i-1), x(i), ue(i));
         theta(i) = sqrt((0.45 / Re) * power(ue(i), -6) * result);
-        duedx = (theta(i)-theta(i-1))*n_trapeziums;
+        duedx = (ue(i)-ue(i-1))/(x(i)-x(i-1));
         m = -Re * theta(i) * theta(i) * duedx;
         H = thwaites_lookup(m);
         delstar(i) = H * theta(i);
@@ -44,7 +44,7 @@ function [int, ils, itr, its, delstar, theta] = bl_solv(x,cp)
     while its == 0 && i < (n_trapeziums)
         i = i + 1;
         thick0 = [theta(i-1), de(i-1)];
-        duedx = (theta(i)-theta(i-1))*n_trapeziums;
+        duedx = (ue(i)-ue(i-1))/(x(i)-x(i-1));
         ue0 = ue(i);
         [delx, thickhist] = ode45(@thickdash, [0, x(i) - x(i-1)], thick0);
         theta(i) = thickhist(end,1);
