@@ -1,5 +1,4 @@
-function [int, ils, itr, its, delstar, theta] = bl_solv(x,cp)
-    global Re ue0 duedx
+function [int, ils, itr, its, delstar, theta] = bl_solv(x,cp,Re)
     n_trapeziums = length(x);
     ue = sqrt(1 - cp);
 
@@ -46,7 +45,7 @@ function [int, ils, itr, its, delstar, theta] = bl_solv(x,cp)
         thick0 = [theta(i-1), de(i-1)];
         duedx = (ue(i)-ue(i-1))/(x(i)-x(i-1));
         ue0 = ue(i);
-        [delx, thickhist] = ode45(@thickdash, [0, x(i) - x(i-1)], thick0);
+        [delx, thickhist] = ode45(@(x,y) thickdash(x,y,Re,ue0,duedx), [0, x(i) - x(i-1)], thick0);
         theta(i) = thickhist(end,1);
         de(i) = thickhist(end,2);
         He(i) = thickhist(end,2) / thickhist(end,1);

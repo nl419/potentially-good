@@ -56,3 +56,7 @@ fname = ['Geometry/naca' id '.surf'];
 fid = fopen(fname,'w');
 fprintf ( fid, '%10.6f %10.6f \n', [xk;yk] );
 fclose(fid);
+
+% Make the vector orientation consistent with the file we just wrote (Nik).
+xk = xk';
+yk = yk';

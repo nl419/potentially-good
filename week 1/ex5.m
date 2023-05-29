@@ -29,7 +29,11 @@ tic
     A = build_lhs(x_cy,y_cy);
 toc
 b = build_rhs(x_cy,y_cy,alpha);
-gam = A\b;
+tic
+    gam = A\b;
+    % Ainv = inv(A);
+    % gam = Ainv * b;
+toc
 
 psi = ym .* cos(alpha) - xm .* sin(alpha);
 for i = 1:(length(x_cy)-1)

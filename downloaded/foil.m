@@ -69,7 +69,7 @@ for nalpha = 1:length(alpha)
   end
 
 %    boundary layer solver
-  [iunt iuls iutr iuts delstaru thetau] = bl_solv ( su, cpu );
+  [iunt iuls iutr iuts delstaru thetau] = bl_solv(su, cpu, Re);
 
 %    lower surface boundary layer calc
 
@@ -91,7 +91,7 @@ for nalpha = 1:length(alpha)
   end
 
 %    boundary layer solver
-  [ilnt ills iltr ilts delstarl thetal] = bl_solv ( sl, cpl );
+  [ilnt ills iltr ilts delstarl thetal] = bl_solv(sl, cpl, Re);
 
 %    lift and drag coefficients
   [Cl Cd] = forces ( circ, cp, delstarl, thetal, delstaru, thetau );
@@ -167,8 +167,8 @@ for nalpha = 1:length(alpha)
 
 end
 
-scatter(clswp, cdswp);
-%scatter(alpha, clswp);
+% scatter(clswp, cdswp);
+scatter(alpha, lovdswp);
 
 %  save alpha sweep data in summary file
 

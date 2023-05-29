@@ -1,5 +1,4 @@
-function dthickdx = thickdash(xmx0, thick)
-    global Re ue0 duedx
+function dthickdx = thickdash(xmx0, thick, Re, ue0, duedx)
     He = thick(2) / thick(1);
     if He >= 1.46
         H = (11 * He + 15) / (48 * He - 59);
