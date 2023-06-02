@@ -78,7 +78,7 @@ for i = 1:length(Re_vals)
     while its ~= 0 && i < n_trapeziums
         i = i + 1;
         H = 2.803;
-        He(i+1) = He(i);
+        He(i) = He(i-1);
         theta(i) = theta(i-1) * power(ue(i-1) / ue(i), H + 2);
     end
 
