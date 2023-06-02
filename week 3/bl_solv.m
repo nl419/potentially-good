@@ -60,7 +60,7 @@ function [int, ils, itr, its, delstar, theta] = bl_solv(x,cp,Re)
 
 
         % Test for turb sep always
-        if its == 0 && itr ~= 0 && He(i) < 1.46
+        if He(i) < 1.46
             its = i;
         end
         % Test for reattachment if ils != 0

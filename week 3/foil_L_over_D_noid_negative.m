@@ -1,6 +1,22 @@
-function L_over_D_max = foil_L_over_D_noid(xk, yk, np, alpha, Re)
+function L_over_D_max = foil_L_over_D_noid_negative(xk, yk, np, alpha, Re, penalise)
     % [xk yk] = textread ( secfile, '%f%f' );
     %  Generate high-resolution surface description via cubic splines
+
+    penalty = 0;
+
+    % Find 2nd deriv everywhere
+    if penalise
+        maxd2dx2 = 0;
+        for i = 2:(length(xk)-1)
+            gradfront = (yk(i+1) - yk(i)); %/ (xk(i+1) - xk(i));
+            gradback = (yk(i) - yk(i-1)); %/ (xk(i) - xk(i-1));
+            d2dx2 = 0.5 * (gradfront - gradback); %/ (xk(i+1) - xk(i-1));
+            maxd2dx2 = max(maxd2dx2, abs(d2dx2));
+        end
+        penalty = maxd2dx2 * 50;
+    end
+    L_over_D_max = -penalty;
+
     nphr = 5*np;
     [xshr, yshr] = splinefit ( xk, yk, nphr );
 
@@ -13,8 +29,6 @@ function L_over_D_max = foil_L_over_D_noid(xk, yk, np, alpha, Re)
     %  Assemble the lhs of the equations for the potential flow calculation
     A = build_lhs ( xs, ys );
     Am1 = inv(A);
-
-    L_over_D_max = 0;
 
     %  Loop over alpha values
     for nalpha = 1:length(alpha)
@@ -87,6 +101,8 @@ function L_over_D_max = foil_L_over_D_noid(xk, yk, np, alpha, Re)
         [Cl, Cd] = forces ( circ, cp, delstarl, thetal, delstaru, thetau );
 
         %    copy Cl and Cd into arrays for alpha sweep plots
-        L_over_D_max = -max(L_over_D_max, Cl/Cd);
+        L_over_D_max = max(L_over_D_max, Cl/Cd) - penalty;
     end
+    disp(L_over_D_max);
+    L_over_D_max = -L_over_D_max;
 end
