@@ -4,7 +4,7 @@ clear all
 
 Re = 0.5e6;
 np = 400;
-alpha = 0:1:20;
+alpha = 0:0.5:10;
 
 cambers = 0:9;
 thicks = 1:30;
