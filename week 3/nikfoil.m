@@ -8,7 +8,7 @@ np = 400;
 Re = 0.5e6;
 alpha = 0:0.2:10;
 
-folderPath = 'Nik/'; % Include trailing `/`
+folderPath = 'Barty/'; % Include trailing `/`
 fileExtension = '.surf';
 
 % Get a list of all files in the folder
@@ -274,16 +274,16 @@ title(['Pressure coefficient on lower surface at alpha=' num2str(alpha_max)]);
 xlabel('X');
 ylabel('-Cp');
 if ilnt_max ~= 0
-    xline(su_max(ilnt_max),'--b',{'Natural Transition'}, 'HandleVisibility','off');
+    xline(sl_max(ilnt_max),'--b',{'Natural Transition'}, 'HandleVisibility','off');
 end
 if ills_max ~= 0
-    xline(su_max(ills_max),'--b',{'Laminar Separation'}, 'HandleVisibility','off');
+    xline(sl_max(ills_max),'--b',{'Laminar Separation'}, 'HandleVisibility','off');
 end
 if iltr_max ~= 0
-    xline(su_max(iltr_max),'--b',{'Turbulent Reattachment'}, 'HandleVisibility','off');
+    xline(sl_max(iltr_max),'--b',{'Turbulent Reattachment'}, 'HandleVisibility','off');
 end
 if ilts_max ~= 0
-    xline(su_max(ilts_max),'--r',{'Turbulent Separation'}, 'HandleVisibility','off');
+    xline(sl_max(ilts_max),'--r',{'Turbulent Separation'}, 'HandleVisibility','off');
 end
 outputFilePath = [folderPath caseref '_cpl.png'];
 saveas(gcf, outputFilePath);

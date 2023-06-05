@@ -62,9 +62,8 @@ cp8 = 1 - gams.^2;
 
 figure(2)
 plot(xsin,-cpex,xs1,-cp1,'--',xs2,-cp2,'-.',xs4,-cp4,'-+',xs8,-cp8,'-x')
-xlabel('x/c')
-ylabel('-c_p')
-title('Van de Vooren cps; varying panel size')
+xlabel('x/c', 'FontSize',18,'FontWeight','bold')
+ylabel('-c_p', 'FontSize',18,'FontWeight','bold')
 legend('exact','100pans','200pans','400pans','800pans')
 
 figure(3)

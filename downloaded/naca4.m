@@ -51,7 +51,7 @@ yk(2*nc-1) = yk(1);
 % output .surf file in standard format
 
 nk = 2 * (nc-1);
-fname = ['Geometry/naca' id '.surf'];
+fname = ['Barty/naca' id '.surf'];
 
 fid = fopen(fname,'w');
 fprintf ( fid, '%10.6f %10.6f \n', [xk;yk] );

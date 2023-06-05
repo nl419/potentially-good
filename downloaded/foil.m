@@ -97,6 +97,14 @@ for nalpha = 1:length(alpha)
   [Cl Cd] = forces ( circ, cp, delstarl, thetal, delstaru, thetau );
 
 %    copy Cl and Cd into arrays for alpha sweep plots
+  if ilts ~= 0 && sl(ilts) < 0.5
+       lovdswp(nalpha) = (Cl/Cd)*(sl(ilts));
+       continue
+  end
+  if iuts ~= 0 && su(iuts) < 0.5
+       lovdswp(nalpha) = (Cl/Cd)*(su(iuts));
+       continue
+  end
 
   clswp(nalpha) = Cl;
   cdswp(nalpha) = Cd;
@@ -169,6 +177,8 @@ end
 
 % scatter(clswp, cdswp);
 scatter(alpha, lovdswp);
+xlabel("x/L", 'FontSize',18,'FontWeight','bold');
+ylabel("L/D", 'FontSize',18,'FontWeight','bold');
 
 %  save alpha sweep data in summary file
 
