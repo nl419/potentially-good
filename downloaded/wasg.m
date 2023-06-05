@@ -40,7 +40,7 @@ xmin = 0.0;
 ymax =  .2;
 ymin = -.2;
 
-pathin=[pwd,'/Geometry/'];
+pathin=[pwd,'/Nik/'];
 [filein,pathin]=uigetfile([pathin '*.surf']);
 y=load([pathin,filein]);
 x=y(2:end-1,1);
