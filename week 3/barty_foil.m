@@ -240,6 +240,17 @@ title('L/D vs alpha');
 xlabel('alpha');
 ylabel('L/D');
 
+
+figure('Position', [100, 100, 1200, 400]);
+plot(xk, yk);
+title('Aerofoil shape');
+
+
+figure;
+plot(su_max, -cpu_max);
+title(['Pressure coefficient on upper surface at alpha=' num2str(alpha_max)]);
+xlabel('x','FontSize',18,'FontWeight','bold');
+ylabel("$-cp_u$", 'FontSize',18,'FontWeight','bold','interpreter','latex');
 if iunt_max ~= 0
     xline(su_max(iunt_max),'--b',{'Natural Transition'}, 'HandleVisibility','off');
 end
@@ -252,6 +263,7 @@ end
 if iuts_max ~= 0
     xline(su_max(iuts_max),'--r',{'Turbulent Separation'}, 'HandleVisibility','off');
 end
+
 
 figure;
 plot(sl_max, -cpl_max);
@@ -273,3 +285,6 @@ end
 
 store_mat = [L_over_D_max, alpha_max];
 disp(store_mat);
+
+fname = [folderPath caseref '.mat'];
+save ( fname, 'xs', 'ys', 'alpha', 'su_max', 'sl_max', 'clswp', 'cdswp', 'lovdswp', 'cpu_max', 'cpl_max' )

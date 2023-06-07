@@ -176,9 +176,9 @@ for nalpha = 1:length(alpha)
 end
 
 % scatter(clswp, cdswp);
-scatter(alpha, lovdswp);
-xlabel("x/L", 'FontSize',18,'FontWeight','bold');
-ylabel("L/D", 'FontSize',18,'FontWeight','bold');
+scatter(alpha, clswp);
+xlabel("\alpha (degrees)", 'FontSize',18,'FontWeight','bold');
+ylabel("Lift coefficient, $c_l$", 'FontSize',18,'FontWeight','bold','interpreter','latex');
 
 %  save alpha sweep data in summary file
 
