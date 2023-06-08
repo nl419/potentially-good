@@ -6,7 +6,7 @@ global Re
 
 np = 400;
 Re = 20e6;
-alpha = 0:0.2:10;
+alpha = 0:0.2:16;
 
 folderPath = 'Barty/'; % Include trailing `/`
 fileExtension = '.surf';
@@ -249,7 +249,7 @@ title('Aerofoil shape');
 figure;
 plot(su_max, -cpu_max);
 title(['Pressure coefficient on upper surface at alpha=' num2str(alpha_max)]);
-xlabel('x','FontSize',18,'FontWeight','bold');
+xlabel('x/L','FontSize',18,'FontWeight','bold');
 ylabel("$-cp_u$", 'FontSize',18,'FontWeight','bold','interpreter','latex');
 if iunt_max ~= 0
     xline(su_max(iunt_max),'--b',{'Natural Transition'}, 'HandleVisibility','off');
@@ -285,6 +285,21 @@ end
 
 store_mat = [L_over_D_max, alpha_max];
 disp(store_mat);
+
+figure;
+scatter(alpha, clswp);
+xlabel("\alpha (degrees)", 'FontSize',18,'FontWeight','bold');
+ylabel("Lift coefficient, $c_l$", 'FontSize',18,'FontWeight','bold','interpreter','latex');
+
+figure;
+scatter(clswp, cdswp);
+xlabel("Lift coefficient, $c_l$", 'FontSize',18,'FontWeight','bold','interpreter','latex');
+ylabel("Drag coefficient, $c_d$", 'FontSize',18,'FontWeight','bold','interpreter','latex');
+
+figure;
+scatter(alpha, cdswp);
+xlabel("\alpha (degrees)", 'FontSize',18,'FontWeight','bold');
+ylabel("Drag coefficient, $c_d$", 'FontSize',18,'FontWeight','bold','interpreter','latex');
 
 fname = [folderPath caseref '.mat'];
 save ( fname, 'xs', 'ys', 'alpha', 'su_max', 'sl_max', 'clswp', 'cdswp', 'lovdswp', 'cpu_max', 'cpl_max' )
